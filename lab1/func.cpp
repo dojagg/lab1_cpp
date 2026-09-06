@@ -15,30 +15,30 @@ Array::~Array()
 
 void Array::input_arr()
 {
-	for (int i = 0; i < size; i++)
+	for (int i = 0; i < this->size; i++)
 	{
 		std::cout << "¬ведите " << i + 1 << " элемент массива - ";
-		std::cin >> arr[i];
+		std::cin >> this->arr[i];
 	}
 }
 
 void Array::print_arr()
 {
-	for (int i = 0; i < size; i++)
-		std::cout << arr[i] << " ";
+	for (int i = 0; i < this->size; i++)
+		std::cout << this->arr[i] << " ";
 	std::cout << std::endl;
 }
 
 Array Array::concat(Array& arr1)
 {
-	int amount = size + arr1.size;	
+	int amount = this->size + arr1.size;	
 	Array result(amount);
 
-	for (int i = 0; i < size; i++)
-		result.arr[i] = arr[i];
+	for (int i = 0; i < this->size; i++)
+		result.arr[i] = this->arr[i];
 
 	for (int i = 0; i < arr1.size; i++)
-		result.arr[size+i] = arr1.arr[i];
+		result.arr[this->size+i] = arr1.arr[i];
 
 	return result;
 }
