@@ -2,35 +2,44 @@
 #include "header.h"
 
 
-Array::Array(int size)                                               // конструктор с параметром
+Array::Array(int size_arr)											    // конструктор с параметром
 {
-	this->size = size;
-	this->arr = new int[size];
+	size = size_arr;
+	arr = new int[size];
 }
 
-Array::~Array()                                                      // деструктор
+Array::Array(const Array& other)                                       // конструктор копировани€ 
+{
+	size = other.size;
+	arr = new int[other.size];
+
+	for (int i = 0; i < size; i++)
+		arr[i] = other.arr[i];
+}
+
+Array::~Array()                                                        // деструктор
 {
 	delete[] arr;
 	arr = nullptr;
 }
 
-void Array::input_arr()                                              // заполнение массива числами
+void Array::input_arr()                                                // заполнение массива числами
 {
-	for (int i = 0; i < this->size; i++)
+	for (int i = 0; i < size; i++)
 	{
 		std::cout << "¬ведите " << i + 1 << " элемент массива - ";
-		std::cin >> this->arr[i];
+		std::cin >> arr[i];
 	}
 }
 
 void Array::print_arr()                                              // вывод массива на экран 
 {
-	for (int i = 0; i < this->size; i++)
-		std::cout << this->arr[i] << " ";
+	for (int i = 0; i < size; i++)
+		std::cout << arr[i] << " ";
 	std::cout << std::endl;                                        
 }
 
-Array Array::concat(Array& arr1)                                     // объединение массивов 
+Array Array::combine(Array& arr1)                                     // объединение массивов 
 {
 	int amount = this->size + arr1.size;	
 	Array result(amount);
