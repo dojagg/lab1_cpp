@@ -2,18 +2,19 @@
 #include "header.h"
 
 
-Array::Array(int size)
+Array::Array(int size)                                               // конструктор с параметром
 {
 	this->size = size;
 	this->arr = new int[size];
 }
 
-Array::~Array()
+Array::~Array()                                                      // деструктор
 {
 	delete[] arr;
+	arr = nullptr;
 }
 
-void Array::input_arr()
+void Array::input_arr()                                              // заполнение массива числами
 {
 	for (int i = 0; i < this->size; i++)
 	{
@@ -22,14 +23,14 @@ void Array::input_arr()
 	}
 }
 
-void Array::print_arr()
+void Array::print_arr()                                              // вывод массива на экран 
 {
 	for (int i = 0; i < this->size; i++)
 		std::cout << this->arr[i] << " ";
-	std::cout << std::endl;
+	std::cout << std::endl;                                        
 }
 
-Array Array::concat(Array& arr1)
+Array Array::concat(Array& arr1)                                     // объединение массивов 
 {
 	int amount = this->size + arr1.size;	
 	Array result(amount);
